@@ -7,6 +7,6 @@ var Admin;
 Admin = Name;
 alert(Admin);
 
-//var a = 1000 + "108";
-//alert(a);
+var a = 1000 + "108";
+alert(a);
 //Произойдет склеивание числа со строкой
