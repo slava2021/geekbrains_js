@@ -1,4 +1,5 @@
-//1. Дан код
+// ДОМАШНЕЕ ЗАДАНИЕ УРОК 2
+// 1. Дан код
 // var a = 1, b = 1, c, d;
 // c = ++a; alert(c);           // 2 префиксная форма 1+1 = в alert выведется 2
 // d = b++; alert(d);           // 1 постфиксная форма, результат будет после вывода alert
@@ -74,44 +75,94 @@
 
 // 5. Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return.
 
-function addCalc(a, b) {
-    return a + b;
-};
-function subCalc(a, b) {
-    return a - b;
-};
-function multCalc(a, b) {
-    return a * b;
-};
-function divCalc(a, b) {
-    return a / b;
-};
-console.log(addCalc(1, 2));
-console.log(subCalc(1, 2));
-console.log(multCalc(1, 2));
-console.log(divCalc(1, 2));
+// function addCalc(a, b) {
+//     return a + b;
+// };
+// function subCalc(a, b) {
+//     return a - b;
+// };
+// function multCalc(a, b) {
+//     return a * b;
+// };
+// function divCalc(a, b) {
+//     if (a != 0)
+//         return a / b;
+//     return 0;
+// }
+// };
+// console.log(addCalc(1, 2));
+// console.log(subCalc(1, 2));
+// console.log(multCalc(1, 2));
+// console.log(divCalc(1, 2));
 
 // 6. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), где arg1, arg2 – значения аргументов,
 // operation – строка с названием операции.В зависимости от переданного значения операции выполнить одну из арифметических
 //  операций(использовать функции из пункта 3) и вернуть полученное значение(использовать switch).
-function mathOperation(arg1, arg2, operation) {
-    switch (operation) {
-        case '+':
-            a = addCalc(arg1, arg2);
-            break;
-        case '-':
-            a = subCalc(arg1, arg2);
-            break;
-        case '*':
-            a = multCalc(arg1, arg2);
-            break;
-        case '/':
-            a = divCalc(arg1, arg2);
-            break;
-    };
-    return a;
+// function mathOperation(arg1, arg2, operation) {
+//     switch (operation) {
+//         case '+':
+//             a = addCalc(arg1, arg2);
+//             break;
+//         case '-':
+//             a = subCalc(arg1, arg2);
+//             break;
+//         case '*':
+//             a = multCalc(arg1, arg2);
+//             break;
+//         case '/':
+//             a = divCalc(arg1, arg2);
+//             break;
+//     };
+//     return a;
+// };
+
+// var a = prompt("Введите знак операции = ");
+
+// console.log(mathOperation(2, 3, a));
+
+/////////////////////////////////////////////////////////////////////////////
+// Урок 3. Циклы, массивы, структуры данных
+// 1. С помощью цикла while вывести все простые числа в промежутке от 0 до 100
+var i = 0;
+while (i <= 100) {
+    var count = 0;
+    for (var j = 2; j <= i; j++) {
+        if (i % j) { continue; }
+        count += 1;
+    }
+    if (count == 1) console.log(i);
+    i++;
 };
 
-var a = prompt("Введите знак операции = ");
+// 2. С этого урока начинаем работать с функционалом интернет-магазина. 
+// Предположим, есть сущность корзины. Нужно реализовать функционал подсчета стоимости корзины в зависимости от находящихся в ней товаров.
 
-console.log(mathOperation(2, 3, a));
+var goods = [
+    {
+        title: "Товар1",
+        price: 100,
+        count: 2
+    },
+    {
+        title: "Товар2",
+        price: 200,
+        count: 3
+    },
+    {
+        title: "Товар3",
+        price: 300,
+        count: 1
+    },
+
+];
+
+function countBasketPrice() {
+    var sum = 0;
+    for (var item of goods) {
+        console.log(item.title + " стоит " + item.price + " количество " + item.count);
+        sum += item.price * item.count;
+    };
+    return sum;
+};
+
+console.log("Итого: " + countBasketPrice(goods));
