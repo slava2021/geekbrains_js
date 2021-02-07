@@ -75,41 +75,43 @@
 // 5. Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return.
 
 function addCalc(a, b) {
-    var a, b, result;
-    var b;
-    x = a + b;
-    document.write("x = " + x + " - функция сложения<br>");
-    return result;
+    return a + b;
 };
 function subCalc(a, b) {
-    var a, b, result;
-    var b;
-    x = Math.abs(a - b);
-    document.write("x = " + x + " - функция вычитания<br>");
-    return result;
+    return a - b;
 };
 function multCalc(a, b) {
-    var a, b, result;
-    var b;
-    x = Math.abs(a * b);
-    document.write("x = " + x + " - функция умножения<br>");
-    return result;
+    return a * b;
 };
 function divCalc(a, b) {
-    var a, b, result;
-    var b;
-    x = Math.abs(a / b);
-    document.write("x = " + x + " - функция деления<br>");
-    return result;
+    return a / b;
 };
-addCalc(1, 2);
-subCalc(1, 2);
-multCalc(1, 2);
-divCalc(1, 2);
+console.log(addCalc(1, 2));
+console.log(subCalc(1, 2));
+console.log(multCalc(1, 2));
+console.log(divCalc(1, 2));
 
 // 6. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), где arg1, arg2 – значения аргументов,
 // operation – строка с названием операции.В зависимости от переданного значения операции выполнить одну из арифметических
 //  операций(использовать функции из пункта 3) и вернуть полученное значение(использовать switch).
 function mathOperation(arg1, arg2, operation) {
+    switch (operation) {
+        case '+':
+            a = addCalc(arg1, arg2);
+            break;
+        case '-':
+            a = subCalc(arg1, arg2);
+            break;
+        case '*':
+            a = multCalc(arg1, arg2);
+            break;
+        case '/':
+            a = divCalc(arg1, arg2);
+            break;
+    };
+    return a;
+};
 
-}
+var a = prompt("Введите знак операции = ");
+
+console.log(mathOperation(2, 3, a));
