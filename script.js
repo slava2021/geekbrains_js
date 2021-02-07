@@ -127,7 +127,7 @@ var i = 0;
 while (i <= 100) {
     var count = 0;
     for (var j = 2; j <= i; j++) {
-        if (i % j) { continue; }
+        if (i % j) continue;
         count += 1;
     }
     if (count == 1) console.log(i);
