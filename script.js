@@ -123,16 +123,16 @@
 /////////////////////////////////////////////////////////////////////////////
 // Урок 3. Циклы, массивы, структуры данных
 // 1. С помощью цикла while вывести все простые числа в промежутке от 0 до 100
-var i = 0;
-while (i <= 100) {
-    var count = 0;
-    for (var j = 2; j <= i; j++) {
-        if (i % j) continue;
-        count += 1;
-    }
-    if (count == 1) console.log(i);
-    i++;
-};
+// var i = 0;
+// while (i <= 100) {
+//     var count = 0;
+//     for (var j = 2; j <= i; j++) {
+//         if (i % j) continue;
+//         count += 1;
+//     }
+//     if (count == 1) console.log(i);
+//     i++;
+// };
 
 // 2. С этого урока начинаем работать с функционалом интернет-магазина. 
 // Предположим, есть сущность корзины. Нужно реализовать функционал подсчета стоимости корзины в зависимости от находящихся в ней товаров.
@@ -140,32 +140,64 @@ while (i <= 100) {
 // a) Организовать такой массив для хранения товаров в корзине;
 // b) Организовать функцию countBasketPrice, которая будет считать стоимость корзины.
 
-var goods = [
-    {
-        title: "Товар1",
-        price: 100,
-        count: 2
-    },
-    {
-        title: "Товар2",
-        price: 200,
-        count: 3
-    },
-    {
-        title: "Товар3",
-        price: 300,
-        count: 1
-    },
+// var goods = [
+//     {
+//         title: "Товар1",
+//         price: 100,
+//         count: 2
+//     },
+//     {
+//         title: "Товар2",
+//         price: 200,
+//         count: 3
+//     },
+//     {
+//         title: "Товар3",
+//         price: 300,
+//         count: 1
+//     },
 
-];
+// ];
 
-function countBasketPrice() {
-    var sum = 0;
-    for (var item of goods) {
-        console.log(item.title + " стоит " + item.price + " количество " + item.count);
-        sum += item.price * item.count;
-    };
-    return sum;
-};
+// function countBasketPrice() {
+//     var sum = 0;
+//     for (var item of goods) {
+//         console.log(item.title + " стоит " + item.price + " количество " + item.count);
+//         sum += item.price * item.count;
+//     };
+//     return sum;
+// };
 
-console.log("Итого: " + countBasketPrice(goods));
+// console.log("Итого: " + countBasketPrice(goods));
+
+/////////////////////////////////////////////////////////////////////////////
+// Урок 4. Объекты в JavaScript
+// 1. Написать функцию, преобразующую число в объект. Передавая на вход число от 0 до 999,
+// мы должны получить на выходе объект, в котором в соответствующих свойствах описаны единицы,
+// десятки и сотни. Например, для числа 245 мы должны получить следующий объект: {‘единицы’: 5, ‘десятки’: 4, ‘сотни’: 2}.
+// Если число превышает 999, необходимо выдать соответствующее сообщение с помощью console.log и вернуть пустой объект.
+
+function NumToObj(num) {
+    var arrNumber = num.split('');
+    while (arrNumber.length < 3) {
+        arrNumber.unshift(0);
+    }
+    var objNumber = {};
+    if (arrNumber.length > 3) {
+        return null;
+    }
+    else {
+        objNumber['сотни'] = +arrNumber[0];
+        objNumber['десятки'] = +arrNumber[1];
+        objNumber['единицы'] = +arrNumber[2];
+        return objNumber;
+    }
+}
+var number = prompt("Input number");
+var obj = NumToObj(number);
+if (obj == null) {
+    console.log("Object is null");
+}
+else {
+    console.log(obj);
+}
