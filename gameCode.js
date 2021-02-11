@@ -1,21 +1,25 @@
 //После игры необходимо спросить номер вопроса. 
 //По номеру вопроса нужно вывести текст вопроса и текст выбранного ответа
 
-var qevent, ok;
+var qevent, ok, q, a;
 
 var answers = [];
 
-do {//Выводим первый вопрос
-    ok = false;
-    qevent = +prompt(works.a00 + works.a1 + works.a2 + '-1 - Выход из игры');
+q = +prompt(works.a00 + works.a1 + works.a2 + '-1 - Выход из игры');
+a = isAnswer(works.a0, qevent, works.a00);
+whileDo(q, a);
 
-    if (qevent == -1) {
-        break;
-    }
-    else {
-        ok = isAnswer(works.a0, qevent);
-    }
-} while (!ok);
+// do {//Выводим первый вопрос
+//     ok = false;
+//     qevent = +prompt(works.a00 + works.a1 + works.a2 + '-1 - Выход из игры');
+
+//     if (qevent == -1) {
+//         break;
+//     }
+//     else {
+//         ok = isAnswer(works.a0, qevent, works.a00);
+//     }
+// } while (!ok);
 
 switch (qevent) {
     case 1: // Первое действие  - если в первом окне ввели 1 то открываем серию окон - окно 2
@@ -26,7 +30,7 @@ switch (qevent) {
                 break;
             }
             else {
-                ok = isAnswer(works.b0, qevent);
+                ok = isAnswer(works.b0, qevent, works.b00);
             }
         } while (!ok);
 
@@ -39,7 +43,7 @@ switch (qevent) {
                         break;
                     }
                     else {
-                        ok = isAnswer(works.d0, qevent);
+                        ok = isAnswer(works.d0, qevent, works.d00);
                     }
                 } while (!ok);
 
@@ -52,7 +56,7 @@ switch (qevent) {
                         break;
                     }
                     else {
-                        ok = isAnswer(works.d0, qevent);
+                        ok = isAnswer(works.d0, qevent, works.d00);
                     }
                 } while (!ok);
 
@@ -72,7 +76,7 @@ switch (qevent) {
                 break;
             }
             else {
-                ok = isAnswer(works.c0, qevent);
+                ok = isAnswer(works.c0, qevent, works.c00);
             }
         } while (!ok);
 
@@ -85,7 +89,7 @@ switch (qevent) {
                         break;
                     }
                     else {
-                        ok = isAnswer(works.d0, qevent);
+                        ok = isAnswer(works.d0, qevent, works.d00);
                     }
                 } while (!ok);
 
@@ -98,15 +102,11 @@ switch (qevent) {
                         break;
                     }
                     else {
-                        ok = isAnswer(works.d0, qevent);
+                        ok = isAnswer(works.d0, qevent, works.d00);
                     }
                 } while (!ok);
-                answers.push(qevent); //add fourth answer
-                console.log(qevent);
                 break;
             case -1: // Второе действие
-                answers.push(qevent); //add fourth answer
-                console.log(qevent);
                 break;
             default:
                 alert('Ошибка');
@@ -118,11 +118,18 @@ switch (qevent) {
         alert('Ошибка');
 }
 alert('Спасибо за игру');
-
-alert(answers);
-
+console.log(answers);
+do {
+    ok = false;
+    var inpval = +prompt("Введите Ваш ход или -1 - Выход из игры ");
+    if (inpval == -1) {
+        break;
+    } else {
+        alert(isAnswers(inpval, answers));
+    }
+} while (!ok);
 //------------------------------------------
-function isAnswer(q, qevent) {
+function isAnswer(q, qevent, qopen) {
     if (isNaN(qevent) || !isFinite(qevent)) {
         alert('Вы ввели недопустимый символ');
         return false;
@@ -131,9 +138,42 @@ function isAnswer(q, qevent) {
         alert('Ваше число выходит из допустимого диапозона');
         return false;
     }
-    answers.push(qevent); //add answer
-    console.log(qevent);
+    answers.push([qopen, qevent]); //add answer
     return true;
-
+}
+//------------------------------------------
+function isAnswers(inp, ans) {
+    if (inpval < 1 || inpval > 4) {
+        alert('Ваше число выходит из допустимого диапозона');
+        return false;
+    }
+    switch (inp) {
+        case 1:
+            a = ans[0].join('\n Ваш ответ ');
+            break;
+        case 2:
+            a = ans[1].join('\n Ваш ответ ');
+            break;
+        case 3:
+            a = ans[2].join('\n Ваш ответ ');
+            break;
+        case 4:
+            a = ans[3].join('\n Ваш ответ ');
+            break;
+    }
+    return a;
 }
 
+function whileDo(q, a) {
+    do {
+        ok = false;
+        qevent = q;
+        if (qevent == -1) {
+            break;
+        }
+        else {
+            ok = a;
+        }
+    } while (!ok);
+    return ok;
+}
