@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .table {
+            border: 1px solid black;
+        }
+
+        .black,
+        .white {
+            width: 25px;
+            height: 25px;
+            font-size: 10px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+        .white {
+            background-color: white;
+        } */
+        #x {
+            width: 100%;
+        }
+
+        div {
+            float: left;
+            width: 40px;
+            height: 40px;
+        }
+
+        .first {
+            clear: left;
+        }
+
+        .black {
+            background: #000;
+        }
+
+        .white {
+            background: #f1f1f1;
+        }
+
+        .first,
+        .last,
+        .top,
+        .bottom {
+            background-color: seashell;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>Заголовок 1</h1>
+    <h1>Заголовок 2</h1>
+    <h1>Заголовок 3</h1>
+    <h1>Заголовок 4</h1>
+    <h1>Заголовок 5</h1>
+
+    <div id="test"></div>
+
+    <ul>
+        <li>1 элемент</li>
+        <li>2 элемент</li>
+        <li>3 элемент</li>
+        <li>4 элемент</li>
+        <li>5 элемент</li>
+    </ul> -->
+
+    <div id="x"></div>
+
+    <script>
+
+        var i, j, clas, txt;
+        var abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        for (i = 0; i < 10; i++) {
+            for (j = 0; j < 10; j++) {
+                clas = '';
+                if (i == 0) {
+                    clas = 'top ';
+                    txt = abc[j];
+                } else if (i == 9) {
+                    clas = 'bottom ';
+                    txt = abc[j];
+                }
+                if (j === 0) clas = 'first ';
+                else if (j === 9) clas = 'last ';
+                clas += (i % 2 == j % 2) ? 'white' : 'black';
+
+                var field = document.createElement('div');
+                if (j > 1 || j < 9) {
+                    field.innerText = txt;
+                }
+
+
+
+                field.className = clas;
+                // document.body.appendChild(field);
+                document.getElementById("x").append(field);
+            }
+        }
+        // var table = document.createElement("table");
+        // table.className = "table";
+        // var td, tr, i;
+
+        // for (i = 0; i < 10; i++) {
+        //     tr = document.createElement("tr");
+        //     table.append(tr);
+        //     for (var j = 0; j < 10; j++) {
+        //         td = document.createElement("td");
+        //         if (i % 2 == j % 2) {
+        //             td.className = "white";
+        //             td.lastChild = ""
+        //         } else {
+        //             td.className = "black";
+        //         }
+        //         td.innerHTML = "<h1>" + (i * j) + "</h1>";
+        //         tr.append(td);
+        //     }
+        // }
+
+        // document.getElementById("x").append(table);
+
+        // var block = document.querySelector("#test");
+        // var test = document.createTextNode("Мой текст");
+        // block.append(test);
+
+        // var list = document.querySelector("ul");
+        // var item = document.createElement("li");
+        // item.innerText = "Наш новый элемент";
+        // list.insertBefore(item, list.children[3]);
+
+        // var block = document.querySelector("#test");
+        // var elem = document.createElement("a");
+        // elem.href = "http://google.com";
+        // elem.innerText = "Перейти в Google";
+        // console.log(elem);
+        // block.append(elem);
+
+        // var headers = document.querySelectorAll("h1");
+        // for (var i = 0, size = 15; i < headers.length; i++, size += 15) {
+        //     if (i % 2 == 0) {
+        //         headers[i].style.color = "red";
+        //     } else {
+        //         headers[i].style.color = "blue";
+        //     }
+        //     headers[i].setAttribute("class", "a b c");
+        // }
+
+
+
+    </script>
+</body>
+
+</html>
