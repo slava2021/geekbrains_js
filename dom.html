@@ -84,29 +84,23 @@
         for (i = 0; i < 10; i++) {
             for (j = 0; j < 10; j++) {
                 clas = '';
-                if (i == 0) {
-                    clas = 'top ';
-                    txt = abc[j];
-                } else if (i == 9) {
-                    clas = 'bottom ';
-                    txt = abc[j];
-                }
+                if (i == 0) clas = 'top ';
+                else if (i == 9) clas = 'bottom ';
+
                 if (j === 0) clas = 'first ';
                 else if (j === 9) clas = 'last ';
                 clas += (i % 2 == j % 2) ? 'white' : 'black';
 
                 var field = document.createElement('div');
-                if (j > 1 || j < 9) {
-                    field.innerText = txt;
-                }
 
-
+                field.innerHTML = String.fromCharCode(65 + j) + i;
 
                 field.className = clas;
-                // document.body.appendChild(field);
                 document.getElementById("x").append(field);
             }
         }
+
+
         // var table = document.createElement("table");
         // table.className = "table";
         // var td, tr, i;
