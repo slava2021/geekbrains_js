@@ -81,6 +81,7 @@
 
         var i, j, clas, txt;
         var abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        var nums = document.getElementsByClassName("first");
         for (i = 0; i < 10; i++) {
             for (j = 0; j < 10; j++) {
                 clas = '';
@@ -92,14 +93,37 @@
                 clas += (i % 2 == j % 2) ? 'white' : 'black';
 
                 var field = document.createElement('div');
-
-                field.innerHTML = String.fromCharCode(65 + j) + i;
-
+                switch (i) {
+                    case 0:
+                        // if (j == 0 || j == 9) {
+                        //     field.innerHTML = " ";
+                        // } else {
+                        //     field.innerHTML = String.fromCharCode(65 + (j - 1));
+                        // }
+                        vertLatLetter(j, i);
+                        nums.innerHtML(1);
+                        console.log(nums);
+                        break;
+                    case 9:
+                        // field.innerHTML = String.fromCharCode(65 + (j - 1));
+                        vertLatLetter(j, i);
+                }
                 field.className = clas;
                 document.getElementById("x").append(field);
             }
         }
 
+
+
+
+        function vertLatLetter(a, b) {
+            (a == 0 || a == 9) ? field.innerText = "" : field.innerText = String.fromCharCode(65 + (a - 1));
+
+            // (document.getElementsByClassName("first") || document.getElementsByClassName("last")) ? field.innerHTML = b++ : field.innerHTML = "";
+            с = 1;
+            return a, с;
+
+        }
 
         // var table = document.createElement("table");
         // table.className = "table";
