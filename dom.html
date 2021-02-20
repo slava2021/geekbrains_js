@@ -7,34 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* .table {
-            border: 1px solid black;
-        }
-
-        .black,
-        .white {
-            width: 25px;
-            height: 25px;
-            font-size: 10px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .black {
-            background-color: black;
-        }
-
-        .white {
-            background-color: white;
-        } */
         #x {
-            width: 100%;
+            width: 400px;
         }
 
         div {
             float: left;
             width: 40px;
             height: 40px;
+            font-weight: bolder;
         }
 
         .first {
@@ -42,23 +23,39 @@
         }
 
         .black {
-            background: #000;
+            background: #af8460;
+            text-align: center;
+            padding: 10px 0 0 0;
+            box-sizing: border-box;
         }
 
         .white {
-            background: #f1f1f1;
+            background: #e8d2af;
+            text-align: center;
+            padding: 10px 0 0 0;
+            box-sizing: border-box;
+        }
+
+        .black_fig {
+            color: black;
+        }
+
+        .white_fig {
+            color: white;
         }
 
         .first,
         .last,
         .top,
         .bottom {
-            background-color: seashell;
+            background-color: #eeeeee;
+            text-align: center;
         }
 
         .top,
         .last {
             transform: rotate(180deg);
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -83,42 +80,62 @@
     <div id="x"></div>
 
     <script>
-
-        var i, j, clas;
-        var num = document.querySelectorAll(".first");
-        for (i = 0; i < 10; i++) {
-            for (j = 0; j < 10; j++) {
+        var clas, num;
+        var figures = ["Л", 'К', 'Ф', 'Д', 'К', 'Ф', 'К', 'Л'];
+        for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < 10; j++) {
                 clas = '';
                 if (i == 0) clas = 'top ';
                 else if (i == 9) clas = 'bottom ';
-
                 if (j === 0) clas = 'first ';
                 else if (j === 9) clas = 'last ';
                 clas += (i % 2 == j % 2) ? 'white' : 'black';
-
                 var field = document.createElement('div');
+                // думаю этот блок вообще можно оптимизировать уменьшить с помощью функций
                 switch (i) {
                     case 0:
-                        vertLatLetter(j);
+                        vertLetter(j);
+                        break;
+                    case 1:
+                        // тут можно испольщовать пвседо классы, что бы добавить коды шахматных фигур
+                        (j == 0 || j == 9) ? field.innerText = "" : field.innerHTML = '<span class="white_fig">' + figures[j - 1] + '</span>';
+                        break;
+                    case 2:
+                        (j == 0 || j == 9) ? field.innerText = "" : field.innerHTML = '<span class="white_fig">П</span>';
+                        break;
+                    case 7:
+                        (j == 0 || j == 9) ? field.innerText = "" : field.innerHTML = '<span class="black_fig">П</span>';
+                        break;
+                    case 8:
+                        (j == 0 || j == 9) ? field.innerText = "" : field.innerHTML = '<span class="black_fig">' + figures[j - 1] + '</span>';
                         break;
                     case 9:
-                        vertLatLetter(j);
+                        vertLetter(j);
                 }
                 if (j == 0 && i > 0 && i < 9) {
                     field.innerHTML = i;
                 } else if (j == 9 && i > 0 && i < 9) {
-                    var num = 9;
-                    num = num - i;
+                    num = 9 - i;
                     field.innerHTML = num;
                 }
                 field.className = clas;
                 document.getElementById("x").append(field);
             }
         }
-
-        function vertLatLetter(a) {
-            (a == 0 || a == 9) ? field.innerText = "" : field.innerText = String.fromCharCode(65 + (a - 1));
+        // наверно лучше объеденить в одну функцию switch и if
+        function vertLetter(colInс) {
+            (colInс == 0 || colInс == 9) ? field.innerText = "" : field.innerText = String.fromCharCode(65 + (colInс - 1));
             return field;
+        }
+
+        function createFugure(colInc) {
+            switch (i) {
+                case 3:
+                    (colInс == 0 || colInс == 9) ? field.innerText = "" : field.innerText = "П";
+                    break;
+            }
+            return field;
+            // (colInс == 2) ? field.innerText = "Ф" : field.innerText = String.fromCharCode(65 + (colInс - 1));
         }
 
         // var table = document.createElement("table");
