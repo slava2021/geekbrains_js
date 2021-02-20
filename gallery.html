@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <button id="b1">Button 1</button>
+    <button id="b2">Button 2</button>
+    <button id="b3">Button 3</button>
+
+    <script>
+        var buttons = document.querySelectorAll("button");
+        // var img, src;
+        // for (var i = 0; i < 3; i++) {
+        //     buttons[i].onclick = function (e) {
+        //         img = document.createElement("img");
+        //         src = ('img/p' + (e.target.id[1] - 1)) + ".jpg";
+        //         console.log(src);
+        //         img.src = src;
+        //         document.querySelector("div").append(img);
+        //         buttons[i].removeAttribute("onclik");
+        //     }
+        // }
+
+
+        function f1() {
+            console.log("F1 action");
+        }
+        function f2() {
+            console.log("F2 action");
+            buttons[0].removeEventListener("click", f2);
+        }
+        buttons[0].addEventListener("click", f1);
+        buttons[0].addEventListener("click", f2);
+    </script>
+</body>
+
+</html>
