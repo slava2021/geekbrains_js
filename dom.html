@@ -55,6 +55,11 @@
         .bottom {
             background-color: seashell;
         }
+
+        .top,
+        .last {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 
@@ -79,9 +84,8 @@
 
     <script>
 
-        var i, j, clas, txt;
-        var abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-        var nums = document.getElementsByClassName("first");
+        var i, j, clas;
+        var num = document.querySelectorAll(".first");
         for (i = 0; i < 10; i++) {
             for (j = 0; j < 10; j++) {
                 clas = '';
@@ -95,34 +99,26 @@
                 var field = document.createElement('div');
                 switch (i) {
                     case 0:
-                        // if (j == 0 || j == 9) {
-                        //     field.innerHTML = " ";
-                        // } else {
-                        //     field.innerHTML = String.fromCharCode(65 + (j - 1));
-                        // }
-                        vertLatLetter(j, i);
-                        nums.innerHtML(1);
-                        console.log(nums);
+                        vertLatLetter(j);
                         break;
                     case 9:
-                        // field.innerHTML = String.fromCharCode(65 + (j - 1));
-                        vertLatLetter(j, i);
+                        vertLatLetter(j);
+                }
+                if (j == 0 && i > 0 && i < 9) {
+                    field.innerHTML = i;
+                } else if (j == 9 && i > 0 && i < 9) {
+                    var num = 9;
+                    num = num - i;
+                    field.innerHTML = num;
                 }
                 field.className = clas;
                 document.getElementById("x").append(field);
             }
         }
 
-
-
-
-        function vertLatLetter(a, b) {
+        function vertLatLetter(a) {
             (a == 0 || a == 9) ? field.innerText = "" : field.innerText = String.fromCharCode(65 + (a - 1));
-
-            // (document.getElementsByClassName("first") || document.getElementsByClassName("last")) ? field.innerHTML = b++ : field.innerHTML = "";
-            с = 1;
-            return a, с;
-
+            return field;
         }
 
         // var table = document.createElement("table");
