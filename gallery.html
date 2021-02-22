@@ -28,16 +28,29 @@
         //     }
         // }
 
+        var img, src;
+        for (var i = 0; i < 3; i++) {
+            function clickButtons(e) {
+                img = document.createElement("img");
+                src = ('img/p' + (e.target.id[1] - 1)) + ".jpg";
+                console.log(src);
+                img.src = src;
+                document.querySelector("div").append(img);
 
-        function f1() {
-            console.log("F1 action");
-        }
-        function f2() {
-            console.log("F2 action");
-            buttons[0].removeEventListener("click", f2);
-        }
-        buttons[0].addEventListener("click", f1);
-        buttons[0].addEventListener("click", f2);
+                buttons[(e.target.id[1] - 1)].removeEventListener("click", clickButtons);
+            };
+            buttons[i].addEventListener("click", clickButtons);
+        };
+
+        // function f1() {
+        //     console.log("F1 action");
+        // }
+        // function f2() {
+        //     console.log("F2 action");
+        //     buttons[0].removeEventListener("click", f2);
+        // }
+        // buttons[0].addEventListener("click", f1);
+        // buttons[0].addEventListener("click", f2);
     </script>
 </body>
 
