@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #x {
+            width: 400px;
+        }
+
+        div {
+            float: left;
+            width: 40px;
+            height: 40px;
+            font-weight: bolder;
+        }
+
+        .first {
+            clear: left;
+        }
+
+        .black {
+            background: #af8460;
+            text-align: center;
+            padding: 10px 0 0 0;
+            box-sizing: border-box;
+        }
+
+        .white {
+            background: #e8d2af;
+            text-align: center;
+            padding: 10px 0 0 0;
+            box-sizing: border-box;
+        }
+
+        .black_fig {
+            color: black;
+        }
+
+        .white_fig {
+            color: white;
+        }
+
+        .first,
+        .last,
+        .top,
+        .bottom {
+            background-color: #eeeeee;
+            text-align: center;
+        }
+
+        .top,
+        .last {
+            transform: rotate(180deg);
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>Заголовок 1</h1>
+    <h1>Заголовок 2</h1>
+    <h1>Заголовок 3</h1>
+    <h1>Заголовок 4</h1>
+    <h1>Заголовок 5</h1>
+
+    <div id="test"></div>
+
+    <ul>
+        <li>1 элемент</li>
+        <li>2 элемент</li>
+        <li>3 элемент</li>
+        <li>4 элемент</li>
+        <li>5 элемент</li>
+    </ul> -->
+
+    <div id="x"></div>
+
+    <script>
+        var clas, num;
+        var figures = ["Л", 'К', 'Ф', 'Д', 'К', 'Ф', 'К', 'Л'];
+        for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < 10; j++) {
+                clas = '';
+                if (i == 0) clas = 'top ';
+                else if (i == 9) clas = 'bottom ';
+                if (j === 0) clas = 'first ';
+                else if (j === 9) clas = 'last ';
+                clas += (i % 2 == j % 2) ? 'white' : 'black';
+                var field = document.createElement('div');
+                // думаю этот блок вообще можно оптимизировать уменьшить с помощью функций
+                switch (i) {
+                    case 0:
+                        vertLetter(j);
+                        break;
+                    case 1:
+                        // тут можно испольщовать пвседо классы, что бы добавить коды шахматных фигур
+                        (j == 0 || j == 9) ? field.innerText = "" : field.innerHTML = '<span class="white_fig">' + figures[j - 1] + '</span>';
+                        break;
+                    case 2:
+                        (j == 0 || j == 9) ? field.innerText = "" : field.innerHTML = '<span class="white_fig">П</span>';
+                        break;
+                    case 7:
+                        (j == 0 || j == 9) ? field.innerText = "" : field.innerHTML = '<span class="black_fig">П</span>';
+                        break;
+                    case 8:
+                        (j == 0 || j == 9) ? field.innerText = "" : field.innerHTML = '<span class="black_fig">' + figures[j - 1] + '</span>';
+                        break;
+                    case 9:
+                        vertLetter(j);
+                }
+                if (j == 0 && i > 0 && i < 9) {
+                    field.innerHTML = i;
+                } else if (j == 9 && i > 0 && i < 9) {
+                    num = 9 - i;
+                    field.innerHTML = num;
+                }
+                field.className = clas;
+                document.getElementById("x").append(field);
+            }
+        }
+        // наверно лучше объеденить в одну функцию switch и if
+        function vertLetter(colInс) {
+            (colInс == 0 || colInс == 9) ? field.innerText = "" : field.innerText = String.fromCharCode(65 + (colInс - 1));
+            return field;
+        }
+
+        function createFugure(colInc) {
+            switch (i) {
+                case 3:
+                    (colInс == 0 || colInс == 9) ? field.innerText = "" : field.innerText = "П";
+                    break;
+            }
+            return field;
+            // (colInс == 2) ? field.innerText = "Ф" : field.innerText = String.fromCharCode(65 + (colInс - 1));
+        }
+
+        // var table = document.createElement("table");
+        // table.className = "table";
+        // var td, tr, i;
+
+        // for (i = 0; i < 10; i++) {
+        //     tr = document.createElement("tr");
+        //     table.append(tr);
+        //     for (var j = 0; j < 10; j++) {
+        //         td = document.createElement("td");
+        //         if (i % 2 == j % 2) {
+        //             td.className = "white";
+        //             td.lastChild = ""
+        //         } else {
+        //             td.className = "black";
+        //         }
+        //         td.innerHTML = "<h1>" + (i * j) + "</h1>";
+        //         tr.append(td);
+        //     }
+        // }
+
+        // document.getElementById("x").append(table);
+
+        // var block = document.querySelector("#test");
+        // var test = document.createTextNode("Мой текст");
+        // block.append(test);
+
+        // var list = document.querySelector("ul");
+        // var item = document.createElement("li");
+        // item.innerText = "Наш новый элемент";
+        // list.insertBefore(item, list.children[3]);
+
+        // var block = document.querySelector("#test");
+        // var elem = document.createElement("a");
+        // elem.href = "http://google.com";
+        // elem.innerText = "Перейти в Google";
+        // console.log(elem);
+        // block.append(elem);
+
+        // var headers = document.querySelectorAll("h1");
+        // for (var i = 0, size = 15; i < headers.length; i++, size += 15) {
+        //     if (i % 2 == 0) {
+        //         headers[i].style.color = "red";
+        //     } else {
+        //         headers[i].style.color = "blue";
+        //     }
+        //     headers[i].setAttribute("class", "a b c");
+        // }
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
